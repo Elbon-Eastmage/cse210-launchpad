@@ -1,0 +1,65 @@
+Journal Design
+
+What does the program do?
+It helps users keep a daily journal by taking care of the saving and loading of entries. It also gives suggestions of what to write about.
+
+What user inputs does it have?
+The user can type a response to the displayed prompt. He also can enter the place where the journal file should be saved, and enter that location to load the file. Finally, he can select options from a menu to access the other user inputs, including the ability to exit the program.
+
+What output does it produce?
+The program shows prompts of what to write about. It displays a menu for saving, loading, exiting, and making an entry. Previous entries can also be shown.
+
+How does the program end?
+The user selects exit from the menu to close the program.
+
+What are good candidates for classes in this program?
+Entry, Prompt, Book, Library, and Nexus.
+
+What are the primary responsibilities of each class?
+Entry stores the given prompt, the user's response, and the date the response was entered. It also can display its data.
+
+Prompt stores the location of the file holding a list of prompts and randomly selects one of those prompts.
+
+Book retrieves all the journal entries from a file and saves new entries to that file.
+
+Library keeps track of all the journal files.
+
+Nexus shows options for user actions and implements code for those options.
+
+What are the behaviors these classes will have in order to fulfill their responsibilities? (In other words, what things should these classes do?)
+
+Entry:
+string _date -  The date of the Entry's creation.
+string _prompt -  The prompt that was given to the user for the Entry.
+string _response -  What the user typed for the Entry.
+GetDate() : string -  Retrieves the current date.
+Print() : void -  Outputs to the screen the Entry's data.
+
+Prompt:
+string _promptFilePath -  Location of the file holding the possible prompts.
+List<string> _prompts: The prompts retrieved from a file.
+GetPrompt() : string -  Randomly selects a prompt.
+
+Book:
+List<Entry> _entries -  Stores all the retrieved entries.
+string _path -  Location of the Book's data.
+GetEntries() : IReadOnlyList<Entry> -  Retrieves all journal entries stored in a file.
+SaveEntry(entry : Entry) : void -  Stores a new entry in a file.
+
+Library:
+AddBook() -  Starts a new journal.
+GetBooks() : IReadOnlyList<string> -  Retrieves the location of each saved journal.
+IsDuplicate(journalName : string) : bool -  Checks if the name of a new journal is the same as another one.
+
+Nexus:
+string _currentOption -  The currently highlighted option.
+bool _mainMenuIsOpen -  Indicates if the main menu is currently open.
+bool _libraryIsOpen -  Indicates if book locations are being displayed.
+PrintOptions() : void -  Displays a list of options the user can interact with.
+HighlightOption() : string -  Makes the option being hovered over visually distinctive and returns the text of the option.
+StartJournal() : void -  Gives access to the Library AddBook method.
+Save() : void -  Gives access to the Book SaveEntry method.
+LoadLibrary() : IReadOnlyList<string> -  Gets the locations of books from Library and displays them.
+LoadBook(bookLocation : string) : IReadOnlyList<string> -  Retrieves entries from Book and displays them.
+Exit() : void -  Ends the program.
+
